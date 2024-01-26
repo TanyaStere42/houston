@@ -10,6 +10,9 @@ jobs:
   deploy:
     name: Docker image build
     runs-on: ubuntu-latest
+    env:
+      DOCKER_NAME: ${{ secrets.DOCKER_USER_SECRET }}
+      DOCKER_PW: ${{ secrets.DOCKER_TOKEN_SECRET }}
 
     steps:
     #  - uses: actions/checkout@v2
@@ -46,8 +49,8 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v3.0.0
         with:
-          username: ${{ secrets.DOCKER_USER_SECRET }}
-          password: ${{ secrets.DOCKER_TOKEN_SECRET }}
+          username: DOCKER_NAME
+          password: DOCKER_PW
           ecr: false
 
       - name: Login to GitHub Container Registry
