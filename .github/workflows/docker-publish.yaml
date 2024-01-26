@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-        if: github.event_name == 'schedule'
-        with:
-          submodules: true
-          ref: main
+    #  - uses: actions/checkout@v2
+    #    if: github.event_name == 'schedule'
+    #    with:
+    #      submodules: true
+    #      ref: main
 
       - uses: actions/checkout@v2
-        if: github.event_name != 'schedule'
+       # if: github.event_name != 'schedule'
         with:
           submodules: true
 
@@ -38,9 +38,9 @@ jobs:
         run: echo ${{ steps.buildx.outputs.platforms }}
 
       # Build images
-      - name: Build Codex
-        run: |
-          ./scripts/codex/buildx.sh
+     # - name: Build Codex
+     #   run: |
+     #     ./scripts/codex/buildx.sh
 
       # Log into container registries
       - name: Docker Login
