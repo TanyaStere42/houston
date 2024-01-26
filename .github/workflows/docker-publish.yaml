@@ -9,6 +9,7 @@ jobs:
   # See also https://docs.docker.com/docker-hub/builds/
   deploy:
     name: Docker image build
+    environment: https://github.com/WildMeOrg/houston/
     runs-on: ubuntu-latest
 
     steps:
